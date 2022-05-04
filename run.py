@@ -516,7 +516,7 @@ def test_multi_iters(config_name,init_model_ckpt,pertubs=None,overwrite=None):
 
 if __name__=='__main__':
     # train_multi_iters('SimpleCNN_E_MNIST_Random')
-    overwrite = {'drop_max':False}# LeRF
+    overwrite = {'drop_max':False}# False will enable LeRF, True will enable MoRF
     print(sys.argv)
     if len(sys.argv)>1:
         
@@ -524,48 +524,48 @@ if __name__=='__main__':
         if 'MNIST' in sys.argv[1]:
             print('MNIST')
             overwrite = {'drop_max':False}
-            test_multi_iters(sys.argv[1],'log_LeRF2/SimpleCNN_E_MNIST_Random/0/SimpleCNN_E_MNIST.pt',['cmean'],overwrite=overwrite)
+            test_multi_iters(sys.argv[1],'./weights/SimpleCNN_E_MNIST.pt',['cmean'],overwrite=overwrite)
             # test_multi_iters(sys.argv[1],None,['cmean'],overwrite=overwrite)#,'noise'])
             # overwrite = {'drop_max':True}
             # test_multi_iters(sys.argv[1],'log_LeRF2/SimpleCNN_E_MNIST_Random/0/SimpleCNN_E_MNIST.pt',['cmean'],overwrite=overwrite)#,'noise'])
         else:
-            overwrite = {'drop_max':False}
+            overwrite = {'drop_max':False}# False will enable LeRF
             test_multi_iters(sys.argv[1],None,['cmean'],overwrite=overwrite)#,'noise'])
-            overwrite = {'drop_max':True}
+            overwrite = {'drop_max':True}# True will enable MoRF
             test_multi_iters(sys.argv[1],None,['cmean'],overwrite=overwrite)#,'noise'])
     else:
-        # 100 iterations
-        # test_multi_iters('vgg16_E_CIFAR10_InputXGradient_no_iter_test_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])#
-        # test_multi_iters('vgg16_E_CIFAR10_Saliency_no_iter_test_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
-        # test_multi_iters('vgg16_E_CIFAR10_IntegratedGradients_no_iter_test_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
-        # test_multi_iters('vgg16_E_CIFAR10_InputXGradient_no_iter_test_h_edge_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
-        # test_multi_iters('vgg16_E_CIFAR10_Saliency_no_iter_test_h_edge_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
-        # test_multi_iters('vgg16_E_CIFAR10_IntegratedGradients_no_iter_test_h_edge_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
+        pass
+        # test_multi_iters('vgg16_E_CIFAR10_InputXGradient_no_iter_test_100','./log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])#
+        # test_multi_iters('vgg16_E_CIFAR10_Saliency_no_iter_test_100','./log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('vgg16_E_CIFAR10_IntegratedGradients_no_iter_test_100','./log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('vgg16_E_CIFAR10_InputXGradient_no_iter_test_h_edge_100','./log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('vgg16_E_CIFAR10_Saliency_no_iter_test_h_edge_100','./log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('vgg16_E_CIFAR10_IntegratedGradients_no_iter_test_h_edge_100','./log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
 
         # # # add more
-        # test_multi_iters('vgg16_E_CIFAR10_GradientShap_no_iter_test_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
-        # test_multi_iters('vgg16_E_CIFAR10_GuidedBackprop_no_iter_test_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
-        # test_multi_iters('vgg16_E_CIFAR10_Deconvolution_no_iter_test_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('vgg16_E_CIFAR10_GradientShap_no_iter_test_100','./log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('vgg16_E_CIFAR10_GuidedBackprop_no_iter_test_100','./log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('vgg16_E_CIFAR10_Deconvolution_no_iter_test_100','./log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
 
-        # test_multi_iters('vgg16_E_CIFAR10_GradientShap_no_iter_test_h_edge_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
-        # test_multi_iters('vgg16_E_CIFAR10_GuidedBackprop_no_iter_test_h_edge_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
-        # test_multi_iters('vgg16_E_CIFAR10_Deconvolution_no_iter_test_h_edge_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('vgg16_E_CIFAR10_GradientShap_no_iter_test_h_edge_100','./log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('vgg16_E_CIFAR10_GuidedBackprop_no_iter_test_h_edge_100','./log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('vgg16_E_CIFAR10_Deconvolution_no_iter_test_h_edge_100','./log/weights/cifar10_vgg16_bn-6ee7ea24.pt',['cmean'],overwrite=overwrite)#,'noise'])
 
-        # test_multi_iters('SimpleCNN_E_MNIST_InputXGradient_no_iter_test_h_edge_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/SimpleCNN_E_MNIST_Random/0/best_model.pt',['cmean'],overwrite=overwrite)
-        # test_multi_iters('SimpleCNN_E_MNIST_Saliency_no_iter_test_h_edge_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/SimpleCNN_E_MNIST_Random/0/best_model.pt',['cmean'],overwrite=overwrite)
-        # test_multi_iters('SimpleCNN_E_MNIST_IntegratedGradients_no_iter_test_h_edge_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/SimpleCNN_E_MNIST_Random/0/best_model.pt',['cmean'],overwrite=overwrite)
-        # test_multi_iters('SimpleCNN_E_MNIST_GradientShap_no_iter_test_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/SimpleCNN_E_MNIST_Random/0/best_model.pt',['cmean'],overwrite=overwrite)
-        # test_multi_iters('SimpleCNN_E_MNIST_GuidedBackprop_no_iter_test_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/SimpleCNN_E_MNIST_Random/0/best_model.pt',['cmean'],overwrite=overwrite)
-        # test_multi_iters('SimpleCNN_E_MNIST_Deconvolution_no_iter_test_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/SimpleCNN_E_MNIST_Random/0/best_model.pt',['cmean'],overwrite=overwrite)
+        # test_multi_iters('SimpleCNN_E_MNIST_InputXGradient_no_iter_test_h_edge_100','./weights/SimpleCNN_E_MNIST.pt',['cmean'],overwrite=overwrite)
+        # test_multi_iters('SimpleCNN_E_MNIST_Saliency_no_iter_test_h_edge_100','./weights/SimpleCNN_E_MNIST.pt',['cmean'],overwrite=overwrite)
+        # test_multi_iters('SimpleCNN_E_MNIST_IntegratedGradients_no_iter_test_h_edge_100','./weights/SimpleCNN_E_MNIST.pt',['cmean'],overwrite=overwrite)
+        # test_multi_iters('SimpleCNN_E_MNIST_GradientShap_no_iter_test_100','./weights/SimpleCNN_E_MNIST.pt',['cmean'],overwrite=overwrite)
+        # test_multi_iters('SimpleCNN_E_MNIST_GuidedBackprop_no_iter_test_100','./weights/SimpleCNN_E_MNIST.pt',['cmean'],overwrite=overwrite)
+        # test_multi_iters('SimpleCNN_E_MNIST_Deconvolution_no_iter_test_100','./weights/SimpleCNN_E_MNIST.pt',['cmean'],overwrite=overwrite)
         
-        # test_multi_iters('SimpleCNN_E_MNIST_GradientShap_no_iter_test_h_edge_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/SimpleCNN_E_MNIST_Random/0/best_model.pt',['cmean'],overwrite=overwrite)
-        # test_multi_iters('SimpleCNN_E_MNIST_GuidedBackprop_no_iter_test_h_edge_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/SimpleCNN_E_MNIST_Random/0/best_model.pt',['cmean'],overwrite=overwrite)
-        # test_multi_iters('SimpleCNN_E_MNIST_Deconvolution_no_iter_test_h_edge_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/SimpleCNN_E_MNIST_Random/0/best_model.pt',['cmean'],overwrite=overwrite)
+        # test_multi_iters('SimpleCNN_E_MNIST_GradientShap_no_iter_test_h_edge_100','./weights/SimpleCNN_E_MNIST.pt',['cmean'],overwrite=overwrite)
+        # test_multi_iters('SimpleCNN_E_MNIST_GuidedBackprop_no_iter_test_h_edge_100','./weights/SimpleCNN_E_MNIST.pt',['cmean'],overwrite=overwrite)
+        # test_multi_iters('SimpleCNN_E_MNIST_Deconvolution_no_iter_test_h_edge_100','./weights/SimpleCNN_E_MNIST.pt',['cmean'],overwrite=overwrite)
         
 
-        # test_multi_iters('SimpleCNN_E_MNIST_InputXGradient_no_iter_test_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/SimpleCNN_E_MNIST_Random/0/best_model.pt',['cmean'],overwrite=overwrite)#,'noise'])
-        # test_multi_iters('SimpleCNN_E_MNIST_Saliency_no_iter_test_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/SimpleCNN_E_MNIST_Random/0/best_model.pt',['cmean'],overwrite=overwrite)#,'noise'])
-        # test_multi_iters('SimpleCNN_E_MNIST_IntegratedGradients_no_iter_test_100','/home/yimupan/ECCV2022/SaliencyAnalysis/log/SimpleCNN_E_MNIST_Random/0/best_model.pt',['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('SimpleCNN_E_MNIST_InputXGradient_no_iter_test_100','./weights/SimpleCNN_E_MNIST.pt',['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('SimpleCNN_E_MNIST_Saliency_no_iter_test_100','./weights/SimpleCNN_E_MNIST.pt',['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('SimpleCNN_E_MNIST_IntegratedGradients_no_iter_test_100','./weights/SimpleCNN_E_MNIST.pt',['cmean'],overwrite=overwrite)#,'noise'])
         
         # test_multi_iters('ResNet50_E_ImageNet_InputXGradient_val_100',None,['cmean'],overwrite=overwrite)#,'noise'])
         # test_multi_iters('ResNet50_E_ImageNet_Saliency_val_100',None,['cmean'],overwrite=overwrite)#,'noise'])
@@ -580,6 +580,6 @@ if __name__=='__main__':
         # test_multi_iters('ResNet50_E_ImageNet_Saliency_val_h_edge_100',None,['cmean'],overwrite=overwrite)
         # test_multi_iters('ResNet50_E_ImageNet_IntegratedGradients_val_h_edge_100',None,['cmean'],overwrite=overwrite)
 
-        test_multi_iters('ResNet50_E_ImageNet_GradientShap_val_h_edge_100',None,['cmean'],overwrite=overwrite)#,'noise'])
-        test_multi_iters('ResNet50_E_ImageNet_GuidedBackprop_val_h_edge_100',None,['cmean'],overwrite=overwrite)#,'noise'])
-        test_multi_iters('ResNet50_E_ImageNet_Deconvolution_val_h_edge_100',None,['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('ResNet50_E_ImageNet_GradientShap_val_h_edge_100',None,['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('ResNet50_E_ImageNet_GuidedBackprop_val_h_edge_100',None,['cmean'],overwrite=overwrite)#,'noise'])
+        # test_multi_iters('ResNet50_E_ImageNet_Deconvolution_val_h_edge_100',None,['cmean'],overwrite=overwrite)#,'noise'])
